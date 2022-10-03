@@ -1,0 +1,55 @@
+.flex {
+    display: flex;
+}
+
+.left {
+    @extend .flex;
+    justify-content: start;
+}
+
+.right {
+    @extend .flex;
+    justify-content: end;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.center-x {
+    @extend .flex;
+    justify-content: center;
+}
+
+.center-y {
+    @extend .flex;
+    align-items: center;
+}
+
+.center {
+    @extend .center-x;
+    @extend .center-y;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.space-between {
+    @extend .flex;
+    justify-content: space-between;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.margin-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.block{
+    display: block;
+    width: 100%;
+}

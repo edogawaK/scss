@@ -1,0 +1,325 @@
+/*
+
+section
+    __title
+    __content
+        __title
+            --big
+        __card
+        __item
+        __collapse
+        __button
+    __float-content
+        --left
+        --right
+*/
+
+.section {
+    position: relative;
+    padding-bottom: 20px;
+
+    &__decorate,
+    &__card,
+    &__collapse {
+        padding: 5%;
+    }
+
+    &__collapse {
+        padding-top: 0;
+    }
+
+    &__button {
+        @extend .center;
+        @extend .pointer;
+        color: white;
+        background: $color;
+        width: 200px;
+        height: 40px;
+        border-radius: 20px;
+        font-weight: 500;
+        letter-spacing: 2px;
+        transition: all 0.5s;
+
+        &:hover {
+            background-color: white;
+            color: $color;
+            border: 1px solid;
+        }
+    }
+
+    &__title {
+        @extend .text-center;
+        color: $color;
+        font-size: 2rem;
+        letter-spacing: 2px;
+        font-weight: 700;
+        position: relative;
+        margin: 40px 0;
+
+        &::after {
+            content: "";
+            background: $color;
+            height: 4px;
+            border-radius: 10px;
+            position: absolute;
+            width: 10%;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    &__item {
+        padding: 0 5%;
+    }
+}
+
+.float-content {
+    position: absolute;
+    top: 20%;
+    width: 50%;
+    padding: 0 5%;
+
+    &__title {
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+
+    &__text {
+        font-size: 0.7rem;
+        margin: 20px 0;
+    }
+
+}
+
+.content {
+    padding: 0 40px;
+    position: relative;
+
+    &__title {
+        // line-height: 60px;
+        // font-size: 60px;
+        font-weight: bold;
+    }
+
+    &__text {
+        margin: 20px 0;
+    }
+}
+
+.card {
+    @extend .pointer;
+    border-radius: 20px;
+    padding: 20px 10px;
+
+    &:hover {
+        box-shadow: 0 0 10px 1px $color;
+    }
+
+    &__image {
+        @extend .margin-auto;
+        width: 20%;
+        color: $color;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    &__title {
+        @extend .text-center;
+        font-weight: 500;
+        letter-spacing: 1px;
+        padding: 20px 0;
+        font-size: 18px;
+    }
+
+    &__text {
+        @extend .text-center;
+        font-size: 14px;
+        line-height: 20px;
+        padding: 10px 20px;
+        color: #777777;
+    }
+
+}
+
+.item {
+    $self: &;
+    @extend .center;
+    @extend .text-center;
+    margin: 20px 0;
+    border: 1px solid #969da3;
+    border-radius: 10px;
+    padding: 4% 5%;
+    color: #969da3;
+
+    & &__number {
+        @extend .center;
+        @extend .pointer;
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        border: 2px solid $color;
+        color: $color;
+        font-weight: 700;
+    }
+
+    & &__title {
+        color: #3a4854;
+        font-weight: 600;
+        letter-spacing: 1px;
+        padding-bottom: 4%;
+    }
+
+    &:hover {
+        #{$self}__number {
+            background-color: $color;
+            color: white;
+        }
+
+        #{$self}__title {
+            color: $color;
+        }
+
+        background: rgba(245, 130, 32, 0.2);
+    }
+}
+
+.collapse {
+    font-size: 14px;
+    border-bottom: 1px solid #969da3;
+    margin: 4%;
+
+    &__title {
+        @extend .pointer;
+        @extend .space-between;
+        color: #333;
+        font-weight: 600;
+        font-size: 1em;
+        letter-spacing: 1px;
+        line-height: 1.4em;
+    }
+
+    &__content {
+        display: none;
+        padding: 10px 0;
+        color: #969da3;
+
+        p {
+            font-size: 1em;
+            line-height: 1.4em;
+        }
+    }
+
+    &__checkbox {
+        display: none;
+    }
+
+    &__checkbox:checked~&__title {
+        color: $color;
+    }
+
+    &__checkbox:checked~&__content {
+        display: block;
+    }
+}
+
+.decorate {
+    @extend .text-center;
+    border-radius: 10px 120px 10px 120px;
+    box-shadow: 0 8px 40px -5px rgb(245 130 32 / 40%);
+    padding: 10%;
+
+    &__title {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: $color;
+        margin-bottom: 20px;
+    }
+
+    &__text {
+        color: #969da3;
+        font-size: 1rem;
+    }
+
+    &__button {
+        @extend .center;
+        padding-top: 10%;
+    }
+}
+
+@media screen and (min-width: 640px) {
+
+    .float-content{
+        &__button{
+            width: 200px;
+            height: 40px;
+        }
+    }
+
+    .item {
+        &__content {
+            text-align: center;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        &__title {
+            padding-top: 10px;
+            font-size: 20px;
+            text-align: left;
+        }
+
+    }
+
+    .collapse {
+        margin: 4% 0%;
+        font-size: 18px;
+    }
+
+    .decorate{
+        padding: 5%;
+
+        &__title{
+            font-size: 20px;
+        }
+
+        &__text{
+            font-size: 14px;
+        }
+
+        &__button{
+            padding-top: 4%;
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .header__wrap {
+        justify-content: end;
+
+    }
+
+    .float-content {
+        &__title {
+            font-size: 34px;
+        }
+        button{
+
+        }
+    }
+
+    .collapse {
+        margin: 4% 1%;
+    }
+
+    .decorate{
+
+        &__title{
+            font-size: 30px;
+        }
+
+        &__text{
+            font-size: 18px;
+        }
+    }
+}

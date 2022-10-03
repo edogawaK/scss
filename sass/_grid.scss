@@ -1,0 +1,99 @@
+@mixin grid() {
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        @extend .margin-auto;
+    }
+
+    .container--fluid {
+        min-width: 100%;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .d-none{
+        display: none !important;
+    }
+
+    .d-block{
+        display: block !important;
+    }
+
+    .d-flex{
+        display: flex !important;
+    }
+
+    .p-x{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .p-y{
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+
+    .p-none{
+        padding: 0;
+    }
+
+    $width: calc(100%/12);
+
+    @for $i from 1 through 12 {
+        .col-#{$i} {
+            width: calc($width*$i) !important;
+        }
+    }
+
+    @for $i from 1 through 10 {
+        .w-#{$i*10} {
+            width: $i*10%;
+        }
+    }
+
+    @each $key, $value in $breakpoints {
+        @media screen and (min-width: $value) {
+            .p-#{$key}-none{
+                padding: 0;
+            }
+            .p-#{$key}-x{
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+        
+            .p-#{$key}-y{
+                padding-top: 5%;
+                padding-bottom: 5%;
+            }
+
+            .d-#{$key}-none {
+                display: none !important;
+            }
+
+            .d-#{$key}-flex {
+                display: flex !important;
+            }
+
+            .d-#{$key}-block {
+                display: block !important;
+                width: 100%;
+            }
+
+            @for $i from 1 through 10 {
+                .w-#{$key}-#{$i*10} {
+                    width: $i*10%;
+                }
+            }        
+
+            @for $i from 1 through 12 {
+                .col-#{$key}-#{$i} {
+                    width: calc($width*$i) !important;
+                }
+            }
+        }
+    }
+
+}
